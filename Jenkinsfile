@@ -1,11 +1,20 @@
 pipeline {
     agent any
 
-    environment {
-        MAVEN_HOME = '/usr/local/maven'
-        JAVA_HOME = '/usr/local/java/openjdk'
-        APP_PORT = '9090'
-    }
+
+    tools {
+            maven 'maven3.9' // 对应全局配置里的 Name
+            jdk 'jdk17'      // 对应全局配置里的 Name
+        }
+//    environment {
+//        MAVEN_HOME = '/usr/local/maven'
+//        JAVA_HOME = '/usr/local/java/openjdk'
+//        APP_PORT = '9090'
+//    }
+        environment {
+          APP_PORT = '9090'
+        }
+
 
     stages {
         stage('Checkout') {
